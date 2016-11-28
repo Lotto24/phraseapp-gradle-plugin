@@ -7,14 +7,31 @@
  * user guide available at https://docs.gradle.org/3.1/userguide/tutorial_java_projects.html
  */
 
+
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "com.gradle.publish:plugin-publish-plugin:0.9.6"
+    }
+}
+
 // Apply the java plugin to add support for ...
-apply plugin: 'java-gradle-plugin'
-apply plugin: 'groovy'
-apply plugin: 'maven'
-apply plugin: 'maven-publish'
+plugins {
+    id 'java-gradle-plugin'
+    id 'groovy'
+    id 'maven'
+    id 'maven-publish'
+    id "com.gradle.plugin-publish" version "0.9.6"
+}
 
 group = 'de.esailors.gradle.plugins'
 version = '1.0.0-SNAPSHOT'
+project.ext.baseVersion = project.version.replace("-SNAPSHOT", "")
+description = 'Plugin to handle everything related with the PhraseApp API.'
 
 repositories {
     jcenter()
@@ -32,20 +49,20 @@ dependencies {
 }
 
 // custom tasks for creating source/javadoc jars
-task sourcesJar(type: Jar, dependsOn:classes) {
+task sourcesJar(type: Jar, dependsOn: classes) {
     classifier = 'sources'
     from sourceSets.main.allSource
 }
 
 javadoc {
-    exclude               "**/internal/**"
+    exclude "**/internal/**"
     options.memberLevel = org.gradle.external.javadoc.JavadocMemberLevel.PROTECTED
-    title                 "PhraseApp Gradle plugin"
+    title "PhraseApp Gradle plugin"
 }
 
-task javadocJar(type: Jar, dependsOn:javadoc) {
-    classifier         'javadoc'
-    from               javadoc.destinationDir
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier 'javadoc'
+    from javadoc.destinationDir
 }
 
 // add javadoc/source jar tasks as artifacts
@@ -60,6 +77,21 @@ task publishLocal(type: Upload) {
     repositories {
         mavenDeployer {
             repository(url: uri('repo'))
+        }
+    }
+}
+
+pluginBundle {
+    website = 'http://www.gradle.org/'
+    vcsUrl = 'https://github.com/eSailors/phraseapp-gradle-plugin'
+
+    plugins {
+        phraseAppPlugin {
+            id = 'de.esailors.gradle.plugins.phraseapp'
+            displayName = 'PhraseApp Gradle Plugin'
+            description = 'Synchronizing your PhraseApp strings for a project.'
+            tags = ['esailors', 'phraseapp', 'phrase', 'i18n', 'translation', 'plugin']
+            version = '1.0.0'
         }
     }
 }
