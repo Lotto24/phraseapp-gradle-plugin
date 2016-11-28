@@ -102,7 +102,7 @@ After you have configured your build.gradle file, simply run: gradle [the-task-y
 ## Release this plugin
 
 1. ensure you have the correct gradle.publish.key and gradle.publish.secret in your gradle config: $HOME_DIR/.gradle/gradle.properties (~/.gradle/gradle.properties)
-2. ensure you have updated the version number of the plugin
+2. ensure you have updated the version number of the plugin and added some changelog comments in the CHANGELOG.md file
 3. release the plugin with **make publish**
 4. commit and push the updated version
 
