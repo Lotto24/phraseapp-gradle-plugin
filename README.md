@@ -118,7 +118,7 @@ After you have configured your build.gradle file, simply run: gradle [the-task-y
 
 ## License
 
-[Apache License, Version 2.0](https://github.com/esailors/phraseapp-gradle-plugin/LICENSE)
+[Apache License, Version 2.0](https://github.com/eSailors/phraseapp-gradle-plugin/blob/master/LICENSE)
 
 ## TODOs
 * integrate auto-version-update plugin
