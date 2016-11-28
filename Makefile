@@ -3,17 +3,19 @@
 
 .PHONY: clean test build install publish
 
+GRADLE = ./gradlew
+
 clean:
-	./gradlew clean
+	${GRADLE} clean
 
 test:
-	./gradlew test
+	${GRADLE} test
 
 build: clean test
-	./gradlew build
+	${GRADLE} build
 
 install: clean build
-	./gradlew install
+	${GRADLE} install
 
 publish: clean build
-	./gradlew publishPlugins
+	${GRADLE} publishPlugins

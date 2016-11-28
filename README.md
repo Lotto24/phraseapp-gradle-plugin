@@ -121,5 +121,9 @@ After you have configured your build.gradle file, simply run: gradle [the-task-y
 [Apache License, Version 2.0](https://github.com/eSailors/phraseapp-gradle-plugin/blob/master/LICENSE)
 
 ## TODOs
-* integrate auto-version-update plugin
+* update build cycle
+    * release on master branch push
+    * create tag on release
+    * integrate auto-version-update plugin
+        * increase version of plugin
 * push functionality - push new keys or translation mistakes to phraseApp

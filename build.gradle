@@ -35,10 +35,18 @@ plugins {
     id "com.gradle.plugin-publish" version "0.9.6"
 }
 
+allprojects {
+    apply plugin: 'java'
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
+
+
 group = 'de.esailors.gradle.plugins'
-version = '1.0.1-SNAPSHOT'
+version = '1.0.2'
 description = 'Synchronizing your PhraseApp strings for a configured project.'
-project.ext.baseVersion = project.version.replace("-SNAPSHOT", "")
+
+println("Building  ${project.name} in version: ${project.version}.")
 
 repositories {
     jcenter()
@@ -88,6 +96,10 @@ task publishLocal(type: Upload) {
     }
 }
 
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.1'
+}
+
 pluginBundle {
 
     website = 'http://www.gradle.org/'
@@ -99,7 +111,7 @@ pluginBundle {
             displayName = 'PhraseApp-Gradle-Plugin'
             description = project.description
             tags = ['esailors', 'phraseapp', 'phrase', 'i18n', 'translation', 'plugin']
-            version = project.ext.baseVersion
+            version = project.version
         }
     }
 }
