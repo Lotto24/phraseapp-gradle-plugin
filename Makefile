@@ -1,12 +1,15 @@
 # PhraseApp Gradle Plugin
 # author: Mike Winkelmann <mike.winkelmann@esailors.de>
 
-.PHONY: clean build install publish
+.PHONY: clean test build install publish
 
 clean:
 	./gradlew clean
 
-build: clean
+test:
+	./gradlew test
+
+build: clean test
 	./gradlew build
 
 install: clean build

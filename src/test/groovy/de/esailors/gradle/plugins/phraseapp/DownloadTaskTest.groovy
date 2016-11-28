@@ -17,4 +17,5 @@ class DownloadTaskTest {
         def task = project.task('download', type: DownloadTask)
         assertTrue(task instanceof DownloadTask)
     }
+
 }

@@ -1,6 +1,6 @@
 # phraseapp-gradle-plugin
 
-This plugin helps you to sync your externalized/internationalized messages with your PharseApp account. So it will be a bridge between you as the developer how created messages keys which need to be translated and the translation agency/translater who will translate this keys.
+This plugin helps you to sync your externalized/internationalized messages with your PharseApp account. So it will be a bridge between you as the developer and the translation agency/translater.
 
 ## Usage
 ### Configuration
@@ -8,12 +8,12 @@ This plugin helps you to sync your externalized/internationalized messages with 
 
 ```
     apply plugin: 'de.esailors.gradle.plugins.phraseapp'
-    
+
     phraseAppSettings {
-        projectId = "123456789-your-project-id"
+        projectId = "123456789-your-project-id"˘
         authToken = "987654321-your-auth-token"
     }
-    
+
     buildscript {
         repositories {
             jcenter()
@@ -85,8 +85,8 @@ After you have configured your build.gradle file, simply run: **gradle [taskname
 
 After you have configured your build.gradle file, simply run: gradle [the-task-you-want-to-execute].
 
-
 ## Dependencies
+
 ### Java SDK
 * Java 7 or higher
 
@@ -94,19 +94,22 @@ After you have configured your build.gradle file, simply run: gradle [the-task-y
 * SLF4J for logging
 * Lombok to remove some boilerplate code
 * Phrase-Java-Client from [mytaxi](https://github.com/mytaxi) to encapsulate the PhraseApp API
-* Spring-Web because the PharseApp-Java-Client needs this -> Bug
+* Spring-Web because the PharseApp-Java-Client needs this
 
 ### For Unit tests
 * JUntit for simple unit tests
 
+## Release this plugin
+
+1. ensure you have the correct gradle.publish.key and gradle.publish.secret in your gradle config: $HOME_DIR/.gradle/gradle.properties (~/.gradle/gradle.properties)
+2. ensure you have updated the version number of the plugin
+3. release the plugin with **make publish**
+4. commit and push the updated version
+
 ## Links
 * [PhraseApp API Doku v2](https://phraseapp.com/docs/api/v2)
 
-## FAQ
-TODO: ProjectId, AuthToken
-
 ## Contributing
-
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git commit -am 'Add some feature'`
@@ -118,4 +121,5 @@ TODO: ProjectId, AuthToken
 [Apache License, Version 2.0](https://github.com/esailors/phraseapp-gradle-plugin/LICENSE)
 
 ## TODOs
+* integrate auto-version-update plugin
 * push functionality - push new keys or translation mistakes to phraseApp

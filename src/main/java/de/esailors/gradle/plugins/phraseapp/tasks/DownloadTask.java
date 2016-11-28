@@ -28,30 +28,30 @@ public class DownloadTask extends DefaultTask {
         PhraseAppSyncTask phraseAppSyncTask = new PhraseAppSyncTask(settings.getAuthToken(), settings.getProjectId());
         configure(phraseAppSyncTask, settings);
         phraseAppSyncTask.run();
-        LOG.info("Finished DownloadTask for PhraseApp project with Id: $s !!!", settings.getProjectId());
+        LOG.info("... finished DownloadTask for PhraseApp project with Id: $s !!!", settings.getProjectId());
     }
 
     private void configure(PhraseAppSyncTask phraseAppSyncTask, PhraseAppExtension settings) {
         String destinationDir = settings.getDestinationDir();
         phraseAppSyncTask.setGeneratedResourcesFoldername(destinationDir);
-        LOG.info("Config: Destination is configured(else DEFAULT) - " + destinationDir);
+        LOG.debug("Config: Destination is configured(else DEFAULT) - " + destinationDir);
 
         String messagesFolderName = settings.getDestinationMessagesDir();
-        LOG.info("Config: MessageFolderName is configured - " + messagesFolderName);
+        LOG.debug("Config: MessageFolderName is configured - " + messagesFolderName);
         phraseAppSyncTask.setMessagesFoldername(messagesFolderName);
 
         String messageFilePrefix = settings.getMessageFilePrefix();
-        LOG.info("Config: MessageFilePrefix is configured - " + messageFilePrefix);
+        LOG.debug("Config: MessageFilePrefix is configured - " + messageFilePrefix);
         phraseAppSyncTask.setMessageFilePrefix(messageFilePrefix);
 
         // TODO - update Client Impl
         String messageFilePostfix = "." + settings.getFileFormat();
-        LOG.info("Config: MessageFilePostfix is configured - " + messageFilePostfix);
+        LOG.debug("Config: MessageFilePostfix is configured - " + messageFilePostfix);
         phraseAppSyncTask.setMessageFilePostfix(messageFilePostfix);
 
         // TODO - fileformat!
         String fileFormat = settings.getFileFormat();
-        LOG.info("Config: format is configured - " + fileFormat);
+        LOG.debug("Config: format is configured - " + fileFormat);
         phraseAppSyncTask.setFormat(JavaPropertiesFormat.newBuilder().build());
     }
 
