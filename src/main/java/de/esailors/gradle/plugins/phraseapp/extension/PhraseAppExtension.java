@@ -82,7 +82,7 @@ public class PhraseAppExtension {
     public void validate() {
         LOG.debug("Validate configuration ..");
         if (!isValid()) {
-            LOG.error("Validation failed because of an invalid configuration: %s", this.toString());
+            LOG.error("Validation failed because of an invalid configuration: {}", this.toString());
             throw new IllegalArgumentException("Configuration is not valid!");
         }
         LOG.debug(".. validation of configuration successfully done!");

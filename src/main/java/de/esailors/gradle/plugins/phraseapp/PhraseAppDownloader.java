@@ -28,6 +28,12 @@ public class PhraseAppDownloader {
     }
 
     public void download() {
+        configure();
+
+        phraseAppSyncTask.run();
+    }
+
+    private void configure() {
         String destinationDir = phraseAppExtension.getDestinationDir();
         phraseAppSyncTask.setGeneratedResourcesFoldername(destinationDir);
         LOG.debug("Config: Destination is configured(else DEFAULT) - " + destinationDir);

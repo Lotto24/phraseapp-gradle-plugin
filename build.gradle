@@ -41,9 +41,8 @@ allprojects {
     targetCompatibility = 1.8
 }
 
-
 group = 'de.esailors.gradle.plugins'
-version = '1.0.2'
+version = '1.0.3'
 description = 'Synchronizing your PhraseApp strings for a configured project.'
 
 println("Building  ${project.name} in version: ${project.version}.")
