@@ -59,12 +59,20 @@ public class PhraseAppExtension {
     private String messageFilePrefix = "messages_";
 
     /**
-     * The file format you want to download the messages keys.
+     * The file extension you want to download the messages keys.
      * <p>
      * [Optional]
      * Default: properties
      */
     private String fileFormat = "properties";
+
+    /**
+     * The format you want to download the messages keys. The file extension (see the fileFormat key) must match this
+     * format, which is, however, not enforced.
+     * [Optional]
+     * Default: properties
+     */
+    private String format = "properties";
 
 
     public boolean isValid() {
@@ -74,7 +82,7 @@ public class PhraseAppExtension {
     public void validate() {
         LOG.debug("Validate configuration ..");
         if (!isValid()) {
-            LOG.error("Validation failed because of an invalid configuration: %s", this.toString());
+            LOG.error("Validation failed because of an invalid configuration: {}", this.toString());
             throw new IllegalArgumentException("Configuration is not valid!");
         }
         LOG.debug(".. validation of configuration successfully done!");

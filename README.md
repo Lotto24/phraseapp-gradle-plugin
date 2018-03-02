@@ -10,7 +10,7 @@ This plugin helps you to sync your externalized/internationalized messages with 
     apply plugin: 'de.esailors.gradle.plugins.phraseapp'
 
     phraseAppSettings {
-        projectId = "123456789-your-project-id"˘
+        projectId = "123456789-your-project-id"
         authToken = "987654321-your-auth-token"
     }
 
@@ -76,7 +76,12 @@ After you have configured your build.gradle file, simply run: **gradle [taskname
 	<tr>
     	<td>fileFormat</td>
     	<td>properties</td>
-    	<td>The file format you want to download the messages keys.[properties,xml]</td>
+    	<td>The file extension you want to download the messages keys.[properties,xml,...]</td>
+    </tr>
+	<tr>
+    	<td>format</td>
+    	<td>properties</td>
+    	<td>The file format you want to download the messages keys in.[properties,xml,...]</td>
     </tr>
 </table>
 * these properties are required!!!
