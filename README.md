@@ -76,7 +76,12 @@ After you have configured your build.gradle file, simply run: **gradle [taskname
 	<tr>
     	<td>fileFormat</td>
     	<td>properties</td>
-    	<td>The file format you want to download the messages keys.[properties,xml]</td>
+    	<td>The file extension you want to download the messages keys.[properties,xml,json,...]</td>
+    </tr>
+	<tr>
+    	<td>format</td>
+    	<td>properties</td>
+    	<td>The file format you want to download the messages keys in.[properties,xml,i18next,...]</td>
     </tr>
 </table>
 * these properties are required!!!

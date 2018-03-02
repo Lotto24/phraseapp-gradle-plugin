@@ -61,6 +61,7 @@ dependencies {
     compile 'com.mytaxi.apis:phrase-java-client:1.0.1'
     compile 'org.springframework:spring-web:3.2.15.RELEASE'
     testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-core:2.15.0'
 }
 
 // custom tasks for creating source/javadoc jars

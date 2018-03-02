@@ -1,7 +1,6 @@
 package de.esailors.gradle.plugins.phraseapp.tasks;
 
-import com.mytaxi.apis.phrase.api.format.JavaPropertiesFormat;
-import com.mytaxi.apis.phrase.tasks.PhraseAppSyncTask;
+import de.esailors.gradle.plugins.phraseapp.PhraseAppDownloader;
 import de.esailors.gradle.plugins.phraseapp.extension.PhraseAppExtension;
 import org.gradle.api.DefaultTask;
 import org.gradle.api.tasks.TaskAction;
@@ -25,34 +24,9 @@ public class DownloadTask extends DefaultTask {
         settings.validate();
 
         LOG.info("Start DownloadTask for PhraseApp project with Id: %s ...", settings.getProjectId());
-        PhraseAppSyncTask phraseAppSyncTask = new PhraseAppSyncTask(settings.getAuthToken(), settings.getProjectId());
-        configure(phraseAppSyncTask, settings);
-        phraseAppSyncTask.run();
+        PhraseAppDownloader downloader = new PhraseAppDownloader(settings);
+        downloader.download();
         LOG.info("... finished DownloadTask for PhraseApp project with Id: $s !!!", settings.getProjectId());
-    }
-
-    private void configure(PhraseAppSyncTask phraseAppSyncTask, PhraseAppExtension settings) {
-        String destinationDir = settings.getDestinationDir();
-        phraseAppSyncTask.setGeneratedResourcesFoldername(destinationDir);
-        LOG.debug("Config: Destination is configured(else DEFAULT) - " + destinationDir);
-
-        String messagesFolderName = settings.getDestinationMessagesDir();
-        LOG.debug("Config: MessageFolderName is configured - " + messagesFolderName);
-        phraseAppSyncTask.setMessagesFoldername(messagesFolderName);
-
-        String messageFilePrefix = settings.getMessageFilePrefix();
-        LOG.debug("Config: MessageFilePrefix is configured - " + messageFilePrefix);
-        phraseAppSyncTask.setMessageFilePrefix(messageFilePrefix);
-
-        // TODO - update Client Impl
-        String messageFilePostfix = "." + settings.getFileFormat();
-        LOG.debug("Config: MessageFilePostfix is configured - " + messageFilePostfix);
-        phraseAppSyncTask.setMessageFilePostfix(messageFilePostfix);
-
-        // TODO - fileformat!
-        String fileFormat = settings.getFileFormat();
-        LOG.debug("Config: format is configured - " + fileFormat);
-        phraseAppSyncTask.setFormat(JavaPropertiesFormat.newBuilder().build());
     }
 
 }
